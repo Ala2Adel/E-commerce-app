@@ -61,6 +61,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -77,12 +78,19 @@ flutter:
     - family: Tajawal
       fonts:
        - asset: assets/fonts/Tajawal-Regular.ttf
+       - weight: 400
        - asset: assets/fonts/Tajawal-Medium.ttf
+       - weight: 500
        - asset: assets/fonts/Tajawal-Light.ttf
+       - weight: 300
        - asset: assets/fonts/Tajawal-ExtraLight.ttf
+       - weight: 200
        - asset: assets/fonts/Tajawal-ExtraBold.ttf
+       - weight: 700
        - asset: assets/fonts/Tajawal-Bold.ttf
+       - weight: 600
        - asset: assets/fonts/Tajawal-Black.ttf
+       - weight: 800
 
 
   # For details regarding fonts from package dependencies,
