@@ -1,4 +1,6 @@
-class Constants{
+class Constants {
+  ///base_url
+  static const String baseUrl = "https://flutterapi.kortobaa.net/";
 
   ///routes
   static const String splashScreen = "/splash_screen";
