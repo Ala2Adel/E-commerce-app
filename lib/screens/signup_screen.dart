@@ -121,7 +121,7 @@ class SignupScreen extends StatelessWidget {
                     Theme(
                       data: ThemeData(elevatedButtonTheme: Theme.of(context).elevatedButtonTheme),
                       child: ElevatedButton(
-                        onPressed: () => signup(),
+                        onPressed: () {                 Navigator.pushNamed(context, Constants.tabsScreen);},
                         child: SizedBox(
                             width: MediaQuery.of(context).size.width,
                             child: Text(

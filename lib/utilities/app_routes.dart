@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/screens/splash_screen.dart';
+import 'package:e_commerce_app/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/login_screen.dart';
 import '../screens/signup_screen.dart';
@@ -12,10 +13,10 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),
         );
-      // case Constants.homeScreen:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const HomeScreen(),
-      //   );
+      case Constants.tabsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const TabsScreen(),
+        );
       case Constants.signUpScreen:
         return MaterialPageRoute(
           builder: (_) => SignupScreen(),

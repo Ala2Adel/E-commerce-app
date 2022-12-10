@@ -1,5 +1,8 @@
 import 'package:e_commerce_app/providers/auth_provider.dart';
+import 'package:e_commerce_app/providers/main_provider.dart';
+import 'package:e_commerce_app/providers/tabs_provider.dart';
 import 'package:e_commerce_app/screens/login_screen.dart';
+import 'package:e_commerce_app/screens/tabs_screen.dart';
 import 'package:e_commerce_app/utilities/app_routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +15,9 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('ar', 'EG'), Locale('en', 'US')],
+        supportedLocales: const [Locale('ar','EG'), Locale('en', 'US')],
         saveLocale: true,
-        startLocale: const Locale('ar', 'EG'),
+        startLocale: const Locale('ar','EG'),
         path: 'assets/translations',
         fallbackLocale: const Locale('ar', 'EG'),
         useFallbackTranslations: true,
@@ -31,6 +34,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => TabsProvider()),
+        ChangeNotifierProvider(create: (context) => MainProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -39,7 +44,7 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         theme: AppTheme.appTheme,
         onGenerateRoute: AppRoutes().generateRoute,
-        home: LoginScreen(),
+        home: const TabsScreen(),
       ),
     );
   }

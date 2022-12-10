@@ -7,4 +7,5 @@ class Constants {
   static const String loginScreen = "/login_screen";
   static const String signUpScreen = "/signUp_screen";
   static const String homeScreen = "/home_screen";
+  static const String tabsScreen = "/tabs_screen";
 }
