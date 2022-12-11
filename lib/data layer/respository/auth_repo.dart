@@ -44,7 +44,7 @@ class AuthRepo {
       sharedPref.setString(Constants.userName, username);
       sharedPref.setString(Constants.accessToken, currToken);
     } else {
-      debugPrint("\n --- Error in log in + ${(response.data)}");
+      debugPrint("\n --- Error in log in + ${(response)}");
     }
     return response;
   }

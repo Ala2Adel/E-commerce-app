@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'common/app_theme.dart';
 import 'data layer/providers/auth_provider.dart';
 import 'data layer/providers/main_provider.dart';
+import 'data layer/providers/shopping_cart_provider.dart';
 import 'data layer/providers/tabs_provider.dart';
 
 void main() async {
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => TabsProvider()),
         ChangeNotifierProvider(create: (context) => MainProvider()),
+        ChangeNotifierProvider(create: (context) => ShoppingProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

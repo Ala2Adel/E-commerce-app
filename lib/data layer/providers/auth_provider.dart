@@ -32,15 +32,15 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  updateLogin(String data) {
-    _statusCode = data;
+  updateLogin() {
     notifyListeners();
   }
 
-  Future setLogin({username, password}) async {
+  Future setLogin({required String username, required String password}) async {
     setLoading(true);
     var response = await authRepo.login(password: password, username: username);
-    updateLogin(response.statusCode.toString());
+    updateLogin();
     setLoading(false);
+    return response;
   }
 }

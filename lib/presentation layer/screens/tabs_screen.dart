@@ -44,60 +44,57 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
         child: Selector<TabsProvider, int>(
           selector: (context, provider) => provider.currentIndex,
           builder: (context, index, child) {
-            return Theme(
-              data: ThemeData(appBarTheme: Theme.of(context).appBarTheme),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 11),
-                child: AppBar(
-                  automaticallyImplyLeading: false,
-                  titleSpacing: 0,
-                  elevation: index == 0 ? 0 : null,
-                  backgroundColor: index == 0 ? AppColors.lightGrey : AppColors.white,
-                  toolbarOpacity: 0.7,
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.menu, color: AppColors.darkGrey, size: 22),
-                        onPressed: () {
-                          Scaffold.of(context).openDrawer();
-                        },
-                      ),
-                      index == 0
-                          ? Text(
-                              "main",
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ).tr()
-                          : index == 1
-                              ? Text(
-                                  "categories",
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ).tr()
-                              : index == 2
-                                  ? Text(
-                                      "shop_cart",
-                                      style: Theme.of(context).textTheme.bodyText1,
-                                    ).tr()
-                                  : index == 3
-                                      ? Text(
-                                          "fav",
-                                          style: Theme.of(context).textTheme.bodyText1,
-                                        ).tr()
-                                      : Text(
-                                          "profile",
-                                          style: Theme.of(context).textTheme.bodyText1,
-                                        ).tr(),
-                      index == 1 || index == 2 || index == 3
-                          ? IconButton(
-                              icon: const Icon(Icons.search, color: AppColors.darkGrey, size: 22),
-                              onPressed: () {},
-                            )
-                          : const SizedBox(
-                              width: 25,
-                            ),
-                    ],
-                  ),
+            return Padding(
+              padding: const EdgeInsets.only(top: 11),
+              child: AppBar(
+                automaticallyImplyLeading: false,
+                titleSpacing: 0,
+                elevation: index == 0 ? 0 : null,
+                backgroundColor: index == 0 ? AppColors.lightGrey : AppColors.white,
+                toolbarOpacity: 0.7,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.menu, color: AppColors.darkGrey, size: 22),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                    ),
+                    index == 0
+                        ? Text(
+                            "main",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ).tr()
+                        : index == 1
+                            ? Text(
+                                "categories",
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ).tr()
+                            : index == 2
+                                ? Text(
+                                    "shop_cart",
+                                    style: Theme.of(context).textTheme.bodyText1,
+                                  ).tr()
+                                : index == 3
+                                    ? Text(
+                                        "fav",
+                                        style: Theme.of(context).textTheme.bodyText1,
+                                      ).tr()
+                                    : Text(
+                                        "profile",
+                                        style: Theme.of(context).textTheme.bodyText1,
+                                      ).tr(),
+                    index == 1 || index == 2 || index == 3
+                        ? IconButton(
+                            icon: const Icon(Icons.search, color: AppColors.darkGrey, size: 22),
+                            onPressed: () {},
+                          )
+                        : const SizedBox(
+                            width: 25,
+                          ),
+                  ],
                 ),
               ),
             );
@@ -180,6 +177,9 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
       body: Selector<TabsProvider, int>(
         selector: (context, provider) => provider.currentIndex,
         builder: (context, index, child) {
+          Future.delayed(Duration.zero, () async {
+            Provider.of<TabsProvider>(context, listen: false).updateCurrentIndex(index);
+          });
           return _children[index];
         },
       ),

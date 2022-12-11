@@ -19,9 +19,9 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   @override
-  void didChangeDependencies() {
+  void initState() {
     _getData();
-    super.didChangeDependencies();
+    super.initState();
   }
 
   List imageSliders = [

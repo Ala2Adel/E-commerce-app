@@ -22,4 +22,17 @@ class ProductsRepo {
     }
     return products;
   }
+
+  Future<ProductModel> getProductById(int prodId) async {
+    ProductModel products =
+        ProductModel(id: 0, name: "name", price: "price", description: "description");
+
+    final response = await _prodService.getProductId(prodId);
+    if (response != null && response.statusCode == 200) {
+      products = response.data.map((post) => ProductModel.fromJson(post)).toList();
+    } else {
+      debugPrint("---\n Error in getting product by id + ${(response.data)}");
+    }
+    return products;
+  }
 }

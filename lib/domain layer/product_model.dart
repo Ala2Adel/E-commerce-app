@@ -8,6 +8,8 @@ class ProductModel {
   String? rate;
   CategoryModel? category;
   String? imageLink;
+  bool? isFavourite;
+  bool? isInCart;
 
   ProductModel({
     required this.id,
@@ -17,6 +19,8 @@ class ProductModel {
     this.rate,
     this.category,
     this.imageLink,
+    this.isFavourite,
+    this.isInCart,
   });
 
   ProductModel.fromJson(Map<String, dynamic> json) {

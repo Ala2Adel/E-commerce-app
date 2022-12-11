@@ -44,7 +44,7 @@ class ApiBaseHelper {
 
     Map<String, String> headers = {
       "Content-type": "application/json",
-      "Accept": "application/json",
+      // "Accept": "application/json",
     };
     Response? response;
     try {
