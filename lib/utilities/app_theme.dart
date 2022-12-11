@@ -5,7 +5,6 @@ import 'app_colours.dart';
 class AppTheme {
   static ThemeData appTheme = ThemeData(
     fontFamily: 'Tajawal',
-    // floatingActionButtonTheme:FloatingActionButtonThemeData() ,
     tabBarTheme: const TabBarTheme(
         unselectedLabelColor: AppColors.darkGrey,
         labelPadding: EdgeInsets.only(bottom: 2,top: 2),
@@ -25,6 +24,7 @@ class AppTheme {
         )),
     textTheme: const TextTheme(
       button: TextStyle(color: AppColors.white, fontSize: 16, fontWeight: FontWeight.w600),
+      headline1: TextStyle(color: AppColors.white, fontSize: 24, fontWeight: FontWeight.w500),
       headline4: TextStyle(color: AppColors.lightOrange, fontSize: 19, fontWeight: FontWeight.w600),
       headline5: TextStyle(color: AppColors.greyText, fontSize: 16, fontWeight: FontWeight.w500),
       subtitle2: TextStyle(color: AppColors.white, fontSize: 14, fontWeight: FontWeight.w500),
@@ -34,8 +34,7 @@ class AppTheme {
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.lightGrey,
     appBarTheme: const AppBarTheme(
-      elevation: 0,
-      toolbarHeight: 34,
+      // toolbarHeight: 34,
       centerTitle: true,
       titleTextStyle:
           TextStyle(color: AppColors.greyText, fontSize: 14, fontWeight: FontWeight.w500),

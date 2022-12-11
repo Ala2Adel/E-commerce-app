@@ -95,7 +95,7 @@ class _MainScreenState extends State<MainScreen> {
                     ],
                   );
                 }),
-            const SizedBox(height: 10),
+            // const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsetsDirectional.only(start: 16),
               child: SizedBox(
@@ -111,22 +111,26 @@ class _MainScreenState extends State<MainScreen> {
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsetsDirectional.only(end: 8.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(56),
                             child: Container(
-                              width: 50,
-                              height: 40,
-                              child: Image.network("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/assortment-of-colorful-ripe-tropical-fruits-top-royalty-free-image-995518546-1564092355.jpg", ),
+                              width: 56,
+                              height: 56,
+                              color: AppColors.darkGrey,
+                              child: Image.network(
+                                "https://www.91-cdn.com/hub/wp-content/uploads/2021/12/moto-edge-x30-specs-feat-2-696x365.jpg",
+                                fit: BoxFit.fill,
+                              ),
                               // decoration: const BoxDecoration(    borderRadius: BorderRadius.all(const Radius.circular(56)),),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 7),
-                        Text(
-                          "clothes",
-                          style: Theme.of(context).textTheme.subtitle1,
-                        )
+                        // const SizedBox(height: 7),
+                        // Text(
+                        //   "clothes",
+                        //   style: Theme.of(context).textTheme.subtitle1,
+                        // )
                       ],
                     );
                   },

@@ -6,6 +6,7 @@ import 'package:e_commerce_app/screens/tabs/shopping_cart_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../providers/tabs_provider.dart';
 import '../utilities/app_colours.dart';
 
@@ -34,12 +35,14 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    int currIndex = Provider.of<TabsProvider>(context, listen: false).currentIndex;
     return Scaffold(
-      extendBody: false,
+      extendBody: true,
       //drawer: AppDrawer(tabController: controller),
       drawer: const Drawer(width: 230, backgroundColor: AppColors.lightGrey),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(Theme.of(context).appBarTheme.toolbarHeight!),
+        preferredSize:
+            Size.fromHeight(currIndex == 1 || currIndex == 2 || currIndex == 3 ? 56 : 34),
         child: Selector<TabsProvider, int>(
           selector: (context, provider) => provider.currentIndex,
           builder: (context, index, child) {
@@ -50,10 +53,13 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
                 child: AppBar(
                   automaticallyImplyLeading: false,
                   titleSpacing: 0,
-                  backgroundColor: AppColors.lightGrey,
+                  elevation: index == 1 || index == 2 || index == 3 ? null : 0,
+                  backgroundColor: index == 1 || index == 2 || index == 3
+                      ? AppColors.white
+                      : AppColors.lightGrey,
                   toolbarOpacity: 0.7,
                   title: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       IconButton(
@@ -62,7 +68,6 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
                           Scaffold.of(context).openDrawer();
                         },
                       ),
-                      const SizedBox(width: 120),
                       index == 0
                           ? Text(
                               "main",
@@ -70,7 +75,7 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
                             ).tr()
                           : index == 1
                               ? Text(
-                                  "sections",
+                                  "categories",
                                   style: Theme.of(context).textTheme.bodyText1,
                                 ).tr()
                               : index == 2
@@ -87,6 +92,14 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
                                           "profile",
                                           style: Theme.of(context).textTheme.bodyText1,
                                         ).tr(),
+                      index == 1 || index == 2 || index == 3
+                          ? IconButton(
+                              icon: const Icon(Icons.search, color: AppColors.darkGrey, size: 22),
+                              onPressed: () {},
+                            )
+                          : const SizedBox(
+                              width: 25,
+                            ),
                     ],
                   ),
                 ),
