@@ -25,7 +25,7 @@ class ProductModel {
     price = json['price'];
     description = json['description'];
     rate = json['rate'];
-    category = json['category'];
+    category = CategoryModel.fromJson(json['category']);
     imageLink = json['image_link'];
   }
 
@@ -33,10 +33,10 @@ class ProductModel {
     return {
       "id": prodModel.id,
       "name": prodModel.name,
-      "price":prodModel.price,
-      "description":prodModel.description,
-      "rate":prodModel.rate,
-      "category":prodModel.category,
+      "price": prodModel.price,
+      "description": prodModel.description,
+      "rate": prodModel.rate,
+      "category": prodModel.category,
       "image_link": prodModel.imageLink,
     };
   }

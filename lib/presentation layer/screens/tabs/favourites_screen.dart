@@ -15,7 +15,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal:17, vertical: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

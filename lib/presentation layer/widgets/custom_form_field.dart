@@ -27,29 +27,27 @@ class CustomFormField extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyText1,
         ).tr(),
         const SizedBox(height: 12),
-        Theme(
-            data: ThemeData(inputDecorationTheme: Theme.of(context).inputDecorationTheme),
-            child: TextFormField(
-              controller: controller,
-              cursorHeight: 21,
-              cursorWidth: 1,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline4!
-                  .copyWith(color: AppColors.primaryColor, fontSize: 14),
-              obscureText: isObscure,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "req_field".tr();
-                }
-                return null;
-              },
-              decoration: InputDecoration(
-                isDense: true,
-                suffixIconConstraints: const BoxConstraints(minHeight: 40, minWidth: 40),
-                suffixIcon: suffixIcon,
-              ),
-            ))
+        TextFormField(
+          controller: controller,
+          cursorHeight: 21,
+          cursorWidth: 1,
+          style: Theme.of(context)
+              .textTheme
+              .headline4!
+              .copyWith(color: AppColors.primaryColor, fontSize: 14),
+          obscureText: isObscure,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "req_field".tr();
+            }
+            return null;
+          },
+          decoration: InputDecoration(
+            isDense: true,
+            suffixIconConstraints: const BoxConstraints(minHeight: 40, minWidth: 40),
+            suffixIcon: suffixIcon,
+          ),
+        )
       ],
     );
   }

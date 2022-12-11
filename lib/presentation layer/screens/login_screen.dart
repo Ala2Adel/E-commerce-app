@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../common/app_colours.dart';
 import '../../common/constants.dart';
-
 import '../../data layer/providers/auth_provider.dart';
+import '../../data layer/respository/auth_repo.dart';
 import '../widgets/custom_form_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -74,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                     Theme(
                       data: ThemeData(elevatedButtonTheme: Theme.of(context).elevatedButtonTheme),
                       child: ElevatedButton(
-                        onPressed: () => _login(),
+                        onPressed: () => _login(context),
                         child: Container(
                             decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.all(
@@ -127,7 +128,28 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  void _login() {
-    _formKey.currentState!.validate() ? null : _formKey.currentState!.save();
+  void _login(BuildContext context) {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    } else {
+      AuthRepo()
+          .login(
+        password: _password.text.trim(),
+        username: _username.text.trim(),
+      )
+          .then((value) async {
+        if (value != null && value.statusCode == 200) {
+          _formKey.currentState!.save();
+          Navigator.of(context).pushNamed(Constants.tabsScreen);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text((value.data)["detail"].toString().replaceAll("", " "),
+                textAlign: TextAlign.end),
+            backgroundColor: AppColors.primaryColor.withOpacity(0.5),
+            duration: const Duration(seconds: 3),
+          ));
+        }
+      });
+    }
   }
 }

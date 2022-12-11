@@ -2,9 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/app_colours.dart';
+import '../../domain layer/product_model.dart';
 
 class ProductWidget extends StatelessWidget {
-  const ProductWidget({Key? key}) : super(key: key);
+  final ProductModel product;
+
+  const ProductWidget({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class ProductWidget extends StatelessWidget {
             Stack(
               children: [
                 Image.network(
-                  "https://www.aheadofthyme.com/wp-content/uploads/2021/07/chicken-shawarma-2-683x1024.jpg",
+                  product.imageLink!,
                   fit: BoxFit.fill,
                   height: 115,
                   width: 121,
@@ -38,28 +41,34 @@ class ProductWidget extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 9),
-            Text(
-              "this is description of product",
-              style: Theme.of(context).textTheme.subtitle1,
+            Expanded(
+              child: Text(
+                product.description,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
             ),
             const SizedBox(height: 11),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  "199.00 ${"egp".tr()}",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontWeight: FontWeight.w600, color: AppColors.primaryColor),
-                ),
-                const SizedBox(height: 12),
-                const Icon(
-                  Icons.add_shopping_cart,
-                  color: AppColors.black,
-                  size: 20.8,
-                )
-              ],
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "${product.price} ${"egp".tr()}",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(fontWeight: FontWeight.w600, color: AppColors.primaryColor),
+                  ),
+                  const SizedBox(height: 12),
+                  const Icon(
+                    Icons.add_shopping_cart,
+                    color: AppColors.black,
+                    size: 20.8,
+                  )
+                ],
+              ),
             )
           ],
         ),

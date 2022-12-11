@@ -7,7 +7,7 @@ class AppTheme {
     fontFamily: 'Tajawal',
     tabBarTheme: const TabBarTheme(
         unselectedLabelColor: AppColors.darkGrey,
-        labelPadding: EdgeInsets.only(bottom: 2,top: 2),
+        labelPadding: EdgeInsets.only(bottom: 2, top: 2),
         labelColor: AppColors.primaryColor,
         unselectedLabelStyle: TextStyle(
           color: AppColors.greyText,
@@ -64,6 +64,12 @@ class AppTheme {
         ),
         borderSide: BorderSide(color: AppColors.primaryColor, width: 1),
       ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(4.0),
+        ),
+        borderSide: BorderSide(color: AppColors.primaryColor, width: 1),
+      ),
       filled: true,
       fillColor: AppColors.white,
       errorBorder: OutlineInputBorder(
@@ -91,8 +97,9 @@ class AppTheme {
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: AppColors.orange,
       elevation: 2.0,
-      behavior: SnackBarBehavior.floating,
-      contentTextStyle: TextStyle(color: AppColors.white),
+      behavior: SnackBarBehavior.fixed,
+      contentTextStyle: TextStyle(
+          color: AppColors.white, fontSize: 12, fontWeight: FontWeight.w500, fontFamily: "Tajawal"),
     ),
   );
 }

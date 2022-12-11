@@ -1,8 +1,9 @@
 import 'package:e_commerce_app/common/app_routes.dart';
-import 'package:e_commerce_app/presentation%20layer/screens/tabs_screen.dart';
+import 'package:e_commerce_app/presentation%20layer/screens/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'common/app_theme.dart';
 import 'data layer/providers/auth_provider.dart';
 import 'data layer/providers/main_provider.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         theme: AppTheme.appTheme,
         onGenerateRoute: AppRoutes().generateRoute,
-        home: const TabsScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../../common/app_colours.dart';
 import '../../../data layer/providers/main_provider.dart';
+import '../../../domain layer/product_model.dart';
 import '../../widgets/product_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -15,6 +16,12 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  @override
+  void didChangeDependencies() {
+    _getData();
+    super.didChangeDependencies();
+  }
+
   List imageSliders = [
     'assets/images/slider_img1.png',
     'assets/images/slider_img2.png',
@@ -96,47 +103,53 @@ class _MainScreenState extends State<MainScreen> {
                   );
                 }),
             // const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(start: 16),
-              child: SizedBox(
-                height: 80,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: 8,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.only(end: 8.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(56),
-                            child: Container(
-                              width: 56,
-                              height: 56,
-                              color: AppColors.darkGrey,
-                              child: Image.network(
-                                "https://www.91-cdn.com/hub/wp-content/uploads/2021/12/moto-edge-x30-specs-feat-2-696x365.jpg",
-                                fit: BoxFit.fill,
-                              ),
-                              // decoration: const BoxDecoration(    borderRadius: BorderRadius.all(const Radius.circular(56)),),
-                            ),
-                          ),
-                        ),
-                        // const SizedBox(height: 7),
-                        // Text(
-                        //   "clothes",
-                        //   style: Theme.of(context).textTheme.subtitle1,
-                        // )
-                      ],
-                    );
-                  },
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsetsDirectional.only(start: 16),
+            //   child:
+            //   SizedBox(
+            //     height: 80,
+            //     child: Selector<MainProvider, List<CategoryModel>>(
+            //         shouldRebuild: (previous, next) => true,
+            //         selector: (context, provider) => provider.,
+            //         builder: (context, prod, child) {
+            //           return ListView.builder(
+            //             shrinkWrap: true,
+            //             physics: const AlwaysScrollableScrollPhysics(),
+            //             itemCount: prod.length,
+            //             scrollDirection: Axis.horizontal,
+            //             itemBuilder: (BuildContext context, int index) {
+            //               return Padding(
+            //                 padding: const EdgeInsets.symmetric(horizontal: 12),
+            //                 child: CategoryIcon(
+            //                   category: prod[index],
+            //                 ),
+            //               );
+            //             },
+            //           );
+            //         }),
+            //   ),
+            //
+            //
+            //   // SizedBox(
+            //   //   height: 80,
+            //   //   child: ListView.builder(
+            //   //     shrinkWrap: true,
+            //   //     physics: const AlwaysScrollableScrollPhysics(),
+            //   //     itemCount: 8,
+            //   //     scrollDirection: Axis.horizontal,
+            //   //     itemBuilder: (BuildContext context, int index) {
+            //   //       return Column(
+            //   //         children: [
+            //   //           Padding(
+            //   //             padding: const EdgeInsetsDirectional.only(end: 8.0),
+            //   //             child: CategoryIcon()
+            //   //           ),
+            //   //         ],
+            //   //       );
+            //   //     },
+            //   //   ),
+            //   // ),
+            // ),
             const SizedBox(height: 32),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 19),
@@ -160,18 +173,31 @@ class _MainScreenState extends State<MainScreen> {
             const SizedBox(height: 8),
             SizedBox(
               height: 205,
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemCount: 4,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: ProductWidget(),
-                  );
-                },
-              ),
+              child: Selector<MainProvider, List<ProductModel>>(
+                  shouldRebuild: (previous, next) => true,
+                  selector: (context, provider) => provider.products,
+                  builder: (context, prod, child) {
+                    return Provider.of<MainProvider>(context, listen: false).loading
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                            color: AppColors.primaryColor,
+                            strokeWidth: 2.5,
+                          ))
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            itemCount: prod.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 12),
+                                child: ProductWidget(
+                                  product: prod[index],
+                                ),
+                              );
+                            },
+                          );
+                  }),
             ),
             const SizedBox(height: 32),
             Padding(
@@ -196,23 +222,37 @@ class _MainScreenState extends State<MainScreen> {
             const SizedBox(height: 8),
             SizedBox(
               height: 205,
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemCount: 5,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: ProductWidget(),
-                  );
-                },
-              ),
+              child: Selector<MainProvider, List<ProductModel>>(
+                  shouldRebuild: (previous, next) => true,
+                  selector: (context, provider) => provider.products,
+                  builder: (context, prod, child) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      itemCount: prod.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: ProductWidget(
+                            product: prod[index],
+                          ),
+                        );
+                      },
+                    );
+                  }),
             ),
             const SizedBox(height: 120),
           ],
         ),
       ),
     );
+  }
+
+  void _getData() {
+    Future.delayed(Duration.zero, () async {
+      MainProvider provider = Provider.of<MainProvider>(context, listen: false);
+      provider.getProducts();
+    });
   }
 }

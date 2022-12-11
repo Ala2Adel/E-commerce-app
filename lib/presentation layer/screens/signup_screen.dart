@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../common/app_colours.dart';
 import '../../common/constants.dart';
 import '../../data layer/providers/auth_provider.dart';
+import '../../data layer/respository/auth_repo.dart';
 import '../widgets/custom_form_field.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -120,9 +123,10 @@ class SignupScreen extends StatelessWidget {
                       data: ThemeData(elevatedButtonTheme: Theme.of(context).elevatedButtonTheme),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, Constants.tabsScreen);
+                          _signup(context);
                         },
                         child: Container(
+                            width: MediaQuery.of(context).size.width,
                             decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.all(
                               Radius.circular(4),
@@ -174,7 +178,37 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-  void signup() {
-    _formKey.currentState!.validate() ? null : _formKey.currentState!.save();
+  void _signup(BuildContext context) {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    } else {
+      AuthRepo()
+          .register(
+        email: _email.text.trim(),
+        password: _password.text.trim(),
+        username: _userName.text.trim(),
+        fName: _firstName.text.trim(),
+        lName: _lastName.text.trim(),
+      )
+          .then((value) async {
+        if (value != null && value.statusCode == 200) {
+          _formKey.currentState!.save();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text((value.data)['message'].toString(), textAlign: TextAlign.end),
+            backgroundColor: AppColors.primaryColor.withOpacity(0.5),
+            duration: const Duration(seconds: 3),
+          ));
+          Timer(const Duration(seconds: 3), () {
+            Navigator.of(context).pushNamed(Constants.loginScreen);
+          });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text((value.data).toString().replaceAll("[", " ").replaceAll("]", " "),
+                textAlign: TextAlign.end),
+            duration: const Duration(seconds: 3),
+          ));
+        }
+      });
+    }
   }
 }

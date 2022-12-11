@@ -38,7 +38,6 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
     int currIndex = Provider.of<TabsProvider>(context, listen: false).currentIndex;
     return Scaffold(
       extendBody: true,
-      //drawer: AppDrawer(tabController: controller),
       drawer: const Drawer(width: 230, backgroundColor: AppColors.lightGrey),
       appBar: PreferredSize(
         preferredSize:
