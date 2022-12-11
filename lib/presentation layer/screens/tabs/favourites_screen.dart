@@ -30,7 +30,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                 scrollDirection: Axis.vertical,
                 itemExtent: 424,
                 itemBuilder: (BuildContext context, int index) {
-                  return FavouriteItem();
+                  return const FavouriteItem();
                 },
               ),
             ),

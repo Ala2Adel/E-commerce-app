@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../common/app_colours.dart';
 import '../../data layer/providers/tabs_provider.dart';
 import '../../domain layer/product_model.dart';
-
+import '../screens/tabs/shopping_cart_screen.dart';
 
 class ProductWidget extends StatelessWidget {
   final ProductModel product;
@@ -15,13 +16,10 @@ class ProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Navigator.pushReplacement(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (_) => CategoriesScreen(),
-        //     ));
-        Provider.of<TabsProvider>(context, listen: false).updateCurrentIndex(2);
-        debugPrint("in product widget");
+        Future.delayed(Duration.zero, () async {
+          Provider.of<TabsProvider>(context, listen: false).updateCurrentIndex(2);
+
+        });
       },
       child: Container(
         width: 133,

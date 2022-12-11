@@ -26,7 +26,7 @@ class AppTheme {
       button: TextStyle(color: AppColors.white, fontSize: 16, fontWeight: FontWeight.w600),
       headline1: TextStyle(color: AppColors.white, fontSize: 24, fontWeight: FontWeight.w500),
       headline4: TextStyle(color: AppColors.lightOrange, fontSize: 19, fontWeight: FontWeight.w600),
-      headline5: TextStyle(color: AppColors.greyText, fontSize: 16, fontWeight: FontWeight.w500),
+      headline5: TextStyle(color: AppColors.greyText, fontSize: 16, fontWeight: FontWeight.w500, height: 1.2),
       subtitle2: TextStyle(color: AppColors.white, fontSize: 14, fontWeight: FontWeight.w500),
       subtitle1: TextStyle(color: AppColors.greyText, fontSize: 12, fontWeight: FontWeight.w500),
       bodyText1: TextStyle(color: AppColors.greyText, fontSize: 14, fontWeight: FontWeight.w500),

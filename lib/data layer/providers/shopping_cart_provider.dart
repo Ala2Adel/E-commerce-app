@@ -10,10 +10,10 @@ class ShoppingProvider extends ChangeNotifier {
 
   final prodRepo = ProductsRepo();
 
-  late ProductModel _products =
+  late ProductModel _product =
       ProductModel(id: 0, name: "name", price: "price", description: "description");
 
-  ProductModel get products => _products;
+  ProductModel get product => _product;
 
   setLoading(bool loading) async {
     _loading = loading;
@@ -21,7 +21,7 @@ class ShoppingProvider extends ChangeNotifier {
   }
 
   setProduct(ProductModel data) {
-    _products = data;
+    _product = data;
     notifyListeners();
   }
 

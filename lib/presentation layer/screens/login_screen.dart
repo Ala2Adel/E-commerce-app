@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../common/app_colours.dart';
 import '../../common/constants.dart';
 import '../../data layer/providers/auth_provider.dart';
@@ -80,15 +81,13 @@ class LoginScreen extends StatelessWidget {
                               Radius.circular(4),
                             )),
                             width: MediaQuery.of(context).size.width,
-                            child:
-                            Provider.of<AuthProvider>(context, listen: false).loading
+                            child: Provider.of<AuthProvider>(context, listen: false).loading
                                 ? const Center(
                                     child: CircularProgressIndicator(
                                     color: AppColors.white,
                                     strokeWidth: 2.5,
                                   ))
-                                :
-                            Text(
+                                : Text(
                                     "login",
                                     textAlign: TextAlign.center,
                                     style: Theme.of(context).textTheme.button,
@@ -140,7 +139,7 @@ class LoginScreen extends StatelessWidget {
     if (!_formKey.currentState!.validate()) {
       return;
     } else {
- authProv
+      authProv
           .setLogin(
         password: _password.text.trim(),
         username: _username.text.trim(),

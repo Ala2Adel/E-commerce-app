@@ -29,7 +29,8 @@ class ProductsRepo {
 
     final response = await _prodService.getProductId(prodId);
     if (response != null && response.statusCode == 200) {
-      products = response.data.map((post) => ProductModel.fromJson(post)).toList();
+      debugPrint("---\n response ${(response.data[0])}");
+      products =  ProductModel.fromJson(response.data[0]);
     } else {
       debugPrint("---\n Error in getting product by id + ${(response.data)}");
     }

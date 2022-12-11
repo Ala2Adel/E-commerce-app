@@ -21,7 +21,7 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
   final List<Widget> _children = [
     const MainScreen(),
     const CategoriesScreen(),
-    const ShoppingCartScreen(),
+    ShoppingCartScreen(),
     const FavouritesScreen(),
     const ProfileScreen()
   ];
@@ -165,7 +165,7 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(children: [
-            Text('352', style: Theme.of(context).textTheme.subtitle2),
+            Text('0', style: Theme.of(context).textTheme.subtitle2),
             const Icon(
               Icons.shopping_cart,
               color: AppColors.white,

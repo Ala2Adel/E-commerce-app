@@ -49,26 +49,18 @@ class MainProvider extends ChangeNotifier {
   Future<void> getProducts() async {
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
     var isLoaded = sharedPref.getString(Constants.products);
-    // if (isLoaded == null) {
-      setLoading(true);
-      var response = await prodRepo.getAllProducts();
-      setProductsList(response);
-      setLoading(false);
-    // } else {
-    //   debugPrint("already loaded list");
-    // }
+    setLoading(true);
+    var response = await prodRepo.getAllProducts();
+    setProductsList(response);
+    setLoading(false);
   }
 
   Future<void> getCategories() async {
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
     var isLoaded = sharedPref.getString(Constants.categories);
-    // if (isLoaded == null) {
-      setLoading(true);
-      var response = await categsRepo.getAllCategories();
-      setCategoryList(response);
-      setLoading(false);
-    // } else {
-    //   debugPrint("already loaded categories");
-    // }
+    setLoading(true);
+    var response = await categsRepo.getAllCategories();
+    setCategoryList(response);
+    setLoading(false);
   }
 }
