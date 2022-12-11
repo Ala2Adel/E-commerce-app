@@ -36,7 +36,6 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     int currIndex = Provider.of<TabsProvider>(context, listen: false).currentIndex;
-    debugPrint("--- $currIndex");
     return Scaffold(
       extendBody: true,
       drawer: const Drawer(width: 230, backgroundColor: AppColors.lightGrey),
@@ -53,7 +52,7 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
                   automaticallyImplyLeading: false,
                   titleSpacing: 0,
                   elevation: index == 0 ? 0 : null,
-                  backgroundColor: index == 0 ? AppColors.lightGrey : AppColors.orange,
+                  backgroundColor: index == 0 ? AppColors.lightGrey : AppColors.white,
                   toolbarOpacity: 0.7,
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

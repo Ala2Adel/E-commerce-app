@@ -1,5 +1,8 @@
-import 'package:e_commerce_app/common/app_colours.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../data layer/providers/main_provider.dart';
+import '../../../domain layer/category_model.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
@@ -14,47 +17,51 @@ class CategoriesScreen extends StatelessWidget {
         children: [
           Flexible(
             fit: FlexFit.loose,
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: 8,
-              scrollDirection: Axis.vertical,
-              itemExtent: 122,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 16),
-                  child: Stack(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 122,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(4)),
-                            color: AppColors.black.withOpacity(0.1),
-                          ),
-                          child: Image.network(
-                            "https://cyclingmagazine.ca/wp-content/uploads/2021/01/zwift_devices-1200x675.jpg",
-                            fit: BoxFit.cover,
-                          ),
+            child: Selector<MainProvider, List<CategoryModel>>(
+                shouldRebuild: (previous, next) => true,
+                selector: (context, provider) => provider.categories,
+                builder: (context, catg, child) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: catg.length,
+                    scrollDirection: Axis.vertical,
+                    // itemExtent: 122,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 16),
+                        child: Stack(
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: SizedBox(
+                                  height: 122,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Image.network(
+                                    catg[index].imageLink!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            PositionedDirectional(
+                              top: 40,
+                              start: 150,
+                              child: Center(
+                                child: Text(
+                                  catg[index].name,
+                                  style: Theme.of(context).textTheme.headline1,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                      ),
-                      PositionedDirectional(
-                        top: 30,
-                        bottom: 30,
-                        start: 70,
-                        end: 70,
-                        child: Text(
-                          "category_name",
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
-                      )
-                    ],
-                  ),
-                );
-              },
-            ),
+                      );
+                    },
+                  );
+                }),
           ),
         ],
       ),
