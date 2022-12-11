@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/screens/splash_screen.dart';
-import 'package:e_commerce_app/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
-import '../screens/login_screen.dart';
-import '../screens/signup_screen.dart';
+import '../presentation layer/screens/login_screen.dart';
+import '../presentation layer/screens/signup_screen.dart';
+import '../presentation layer/screens/splash_screen.dart';
+import '../presentation layer/screens/tabs_screen.dart';
 import 'constants.dart';
 
 class AppRoutes {

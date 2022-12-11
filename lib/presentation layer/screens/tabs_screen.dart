@@ -1,14 +1,14 @@
-import 'package:e_commerce_app/screens/tabs/categories_screen.dart';
-import 'package:e_commerce_app/screens/tabs/favourites_screen.dart';
-import 'package:e_commerce_app/screens/tabs/main_screen.dart';
-import 'package:e_commerce_app/screens/tabs/profile_screen.dart';
-import 'package:e_commerce_app/screens/tabs/shopping_cart_screen.dart';
+import 'package:e_commerce_app/presentation%20layer/screens/tabs/categories_screen.dart';
+import 'package:e_commerce_app/presentation%20layer/screens/tabs/favourites_screen.dart';
+import 'package:e_commerce_app/presentation%20layer/screens/tabs/main_screen.dart';
+import 'package:e_commerce_app/presentation%20layer/screens/tabs/profile_screen.dart';
+import 'package:e_commerce_app/presentation%20layer/screens/tabs/shopping_cart_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/tabs_provider.dart';
-import '../utilities/app_colours.dart';
+import '../../providers/tabs_provider.dart';
+import '../../utilities/app_colours.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);

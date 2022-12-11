@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/auth_provider.dart';
-import '../utilities/app_colours.dart';
-import '../utilities/constants.dart';
+import '../../providers/auth_provider.dart';
+import '../../utilities/app_colours.dart';
+import '../../utilities/constants.dart';
 import '../widgets/custom_form_field.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -70,7 +70,6 @@ class SignupScreen extends StatelessWidget {
                       suffixIcon: const SizedBox(),
                     ),
                     const SizedBox(height: 16),
-
                     Selector<AuthProvider, bool>(
                         selector: (context, provider) => provider.passVisible,
                         builder: (context, passVisible, child) {
@@ -116,14 +115,18 @@ class SignupScreen extends StatelessWidget {
                             ),
                           );
                         }),
-
                     const SizedBox(height: 22),
                     Theme(
                       data: ThemeData(elevatedButtonTheme: Theme.of(context).elevatedButtonTheme),
                       child: ElevatedButton(
-                        onPressed: () {                 Navigator.pushNamed(context, Constants.tabsScreen);},
-                        child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
+                        onPressed: () {
+                          Navigator.pushNamed(context, Constants.tabsScreen);
+                        },
+                        child: Container(
+                            decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            )),
                             child: Text(
                               "register",
                               textAlign: TextAlign.center,

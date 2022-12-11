@@ -2,9 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/auth_provider.dart';
-import '../utilities/app_colours.dart';
-import '../utilities/constants.dart';
+
+import '../../providers/auth_provider.dart';
+import '../../utilities/app_colours.dart';
+import '../../utilities/constants.dart';
 import '../widgets/custom_form_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -75,7 +76,11 @@ class LoginScreen extends StatelessWidget {
                       data: ThemeData(elevatedButtonTheme: Theme.of(context).elevatedButtonTheme),
                       child: ElevatedButton(
                         onPressed: () => _login(),
-                        child: SizedBox(
+                        child: Container(
+                            decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            )),
                             width: MediaQuery.of(context).size.width,
                             child: Text(
                               "login",

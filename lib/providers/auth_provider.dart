@@ -5,6 +5,7 @@ class AuthProvider extends ChangeNotifier {
   bool _confirmPassVisible = false;
 
   bool get passVisible => _passVisible;
+
   bool get confirmPassVisible => _confirmPassVisible;
 
   updatePassVisible(bool value) async {

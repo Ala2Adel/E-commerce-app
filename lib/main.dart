@@ -1,8 +1,8 @@
+import 'package:e_commerce_app/presentation%20layer/screens/tabs_screen.dart';
 import 'package:e_commerce_app/providers/auth_provider.dart';
 import 'package:e_commerce_app/providers/main_provider.dart';
 import 'package:e_commerce_app/providers/tabs_provider.dart';
-import 'package:e_commerce_app/screens/login_screen.dart';
-import 'package:e_commerce_app/screens/tabs_screen.dart';
+
 import 'package:e_commerce_app/utilities/app_routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

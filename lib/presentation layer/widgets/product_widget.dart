@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../utilities/app_colours.dart';
+import '../../utilities/app_colours.dart';
 
 class ProductWidget extends StatelessWidget {
   const ProductWidget({Key? key}) : super(key: key);
@@ -46,12 +47,13 @@ class ProductWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "199.00" + "ج.م",
+                  "199.00 ${"egp".tr()}",
                   style: Theme.of(context)
                       .textTheme
                       .bodyText1!
                       .copyWith(fontWeight: FontWeight.w600, color: AppColors.primaryColor),
-                ), const SizedBox(height: 12),
+                ),
+                const SizedBox(height: 12),
                 const Icon(
                   Icons.add_shopping_cart,
                   color: AppColors.black,
