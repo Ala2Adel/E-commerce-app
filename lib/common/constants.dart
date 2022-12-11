@@ -1,6 +1,7 @@
 class Constants {
   ///base_url
   static const String baseUrl = "https://flutterapi.kortobaa.net/";
+  static const String accessToken = "";
 
   ///routes
   static const String splashScreen = "/splash_screen";

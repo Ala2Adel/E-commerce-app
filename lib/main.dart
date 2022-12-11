@@ -1,23 +1,21 @@
+import 'package:e_commerce_app/common/app_routes.dart';
 import 'package:e_commerce_app/presentation%20layer/screens/tabs_screen.dart';
-import 'package:e_commerce_app/providers/auth_provider.dart';
-import 'package:e_commerce_app/providers/main_provider.dart';
-import 'package:e_commerce_app/providers/tabs_provider.dart';
-
-import 'package:e_commerce_app/utilities/app_routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'utilities/app_theme.dart';
+import 'common/app_theme.dart';
+import 'data layer/providers/auth_provider.dart';
+import 'data layer/providers/main_provider.dart';
+import 'data layer/providers/tabs_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('ar','EG'), Locale('en', 'US')],
+        supportedLocales: const [Locale('ar', 'EG'), Locale('en', 'US')],
         saveLocale: true,
-        startLocale: const Locale('ar','EG'),
+        startLocale: const Locale('ar', 'EG'),
         path: 'assets/translations',
         fallbackLocale: const Locale('ar', 'EG'),
         useFallbackTranslations: true,

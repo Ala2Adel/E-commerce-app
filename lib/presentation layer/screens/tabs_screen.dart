@@ -7,8 +7,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/tabs_provider.dart';
-import '../../utilities/app_colours.dart';
+import '../../common/app_colours.dart';
+import '../../data layer/providers/tabs_provider.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);

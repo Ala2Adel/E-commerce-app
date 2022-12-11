@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/auth_provider.dart';
-import '../../utilities/app_colours.dart';
-import '../../utilities/constants.dart';
+import '../../common/app_colours.dart';
+import '../../common/constants.dart';
+import '../../data layer/providers/auth_provider.dart';
 import '../widgets/custom_form_field.dart';
 
 class SignupScreen extends StatelessWidget {

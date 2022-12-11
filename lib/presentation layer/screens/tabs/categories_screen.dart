@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/utilities/app_colours.dart';
+import 'package:e_commerce_app/common/app_colours.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesScreen extends StatelessWidget {

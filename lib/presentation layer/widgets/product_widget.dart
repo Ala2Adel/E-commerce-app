@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../utilities/app_colours.dart';
+import '../../common/app_colours.dart';
 
 class ProductWidget extends StatelessWidget {
   const ProductWidget({Key? key}) : super(key: key);
