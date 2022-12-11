@@ -5,7 +5,9 @@ import 'package:provider/provider.dart';
 
 import '../../../common/app_colours.dart';
 import '../../../data layer/providers/main_provider.dart';
+import '../../../domain layer/category_model.dart';
 import '../../../domain layer/product_model.dart';
+import '../../widgets/category_icon.dart';
 import '../../widgets/product_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -102,54 +104,38 @@ class _MainScreenState extends State<MainScreen> {
                     ],
                   );
                 }),
-            // const SizedBox(height: 10),
-            // Padding(
-            //   padding: const EdgeInsetsDirectional.only(start: 16),
-            //   child:
-            //   SizedBox(
-            //     height: 80,
-            //     child: Selector<MainProvider, List<CategoryModel>>(
-            //         shouldRebuild: (previous, next) => true,
-            //         selector: (context, provider) => provider.,
-            //         builder: (context, prod, child) {
-            //           return ListView.builder(
-            //             shrinkWrap: true,
-            //             physics: const AlwaysScrollableScrollPhysics(),
-            //             itemCount: prod.length,
-            //             scrollDirection: Axis.horizontal,
-            //             itemBuilder: (BuildContext context, int index) {
-            //               return Padding(
-            //                 padding: const EdgeInsets.symmetric(horizontal: 12),
-            //                 child: CategoryIcon(
-            //                   category: prod[index],
-            //                 ),
-            //               );
-            //             },
-            //           );
-            //         }),
-            //   ),
-            //
-            //
-            //   // SizedBox(
-            //   //   height: 80,
-            //   //   child: ListView.builder(
-            //   //     shrinkWrap: true,
-            //   //     physics: const AlwaysScrollableScrollPhysics(),
-            //   //     itemCount: 8,
-            //   //     scrollDirection: Axis.horizontal,
-            //   //     itemBuilder: (BuildContext context, int index) {
-            //   //       return Column(
-            //   //         children: [
-            //   //           Padding(
-            //   //             padding: const EdgeInsetsDirectional.only(end: 8.0),
-            //   //             child: CategoryIcon()
-            //   //           ),
-            //   //         ],
-            //   //       );
-            //   //     },
-            //   //   ),
-            //   // ),
-            // ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsetsDirectional.only(start: 16),
+              child: SizedBox(
+                height: 80,
+                child: Selector<MainProvider, List<CategoryModel>>(
+                    shouldRebuild: (previous, next) => true,
+                    selector: (context, provider) => provider.categories,
+                    builder: (context, catg, child) {
+                      return Provider.of<MainProvider>(context, listen: false).loading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                              color: AppColors.primaryColor,
+                              strokeWidth: 2.5,
+                            ))
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              itemCount: catg.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                                  child: CategoryIcon(
+                                    category: catg[index],
+                                  ),
+                                );
+                              },
+                            );
+                    }),
+              ),
+            ),
             const SizedBox(height: 32),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 19),
@@ -253,6 +239,7 @@ class _MainScreenState extends State<MainScreen> {
     Future.delayed(Duration.zero, () async {
       MainProvider provider = Provider.of<MainProvider>(context, listen: false);
       provider.getProducts();
+      provider.getCategories();
     });
   }
 }

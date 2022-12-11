@@ -8,6 +8,7 @@ class Constants {
   static const String lastName = "lName";
   static const String userName = "userName";
   static const String products = "products";
+  static const String categories = "catgs";
 
   ///routes
   static const String splashScreen = "/splash_screen";

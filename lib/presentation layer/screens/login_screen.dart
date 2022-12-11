@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../../common/app_colours.dart';
 import '../../common/constants.dart';
 import '../../data layer/providers/auth_provider.dart';
-import '../../data layer/respository/auth_repo.dart';
 import '../widgets/custom_form_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -82,11 +81,17 @@ class LoginScreen extends StatelessWidget {
                               Radius.circular(4),
                             )),
                             width: MediaQuery.of(context).size.width,
-                            child: Text(
-                              "login",
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.button,
-                            ).tr()),
+                            child: Provider.of<AuthProvider>(context, listen: false).loading
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                    color: AppColors.white,
+                                    strokeWidth: 2.5,
+                                  ))
+                                : Text(
+                                    "login",
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context).textTheme.button,
+                                  ).tr()),
                       ),
                     ),
                     const SizedBox(height: 32),
@@ -129,11 +134,13 @@ class LoginScreen extends StatelessWidget {
   }
 
   void _login(BuildContext context) {
+    AuthProvider authProv = Provider.of<AuthProvider>(context, listen: false);
+
     if (!_formKey.currentState!.validate()) {
       return;
     } else {
-      AuthRepo()
-          .login(
+      authProv
+          .setLogin(
         password: _password.text.trim(),
         username: _username.text.trim(),
       )

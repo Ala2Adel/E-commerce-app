@@ -13,11 +13,6 @@ class CategoryIcon extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          category.name,
-          style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w600),
-        ),
-        const SizedBox(height: 7),
         ClipRRect(
           borderRadius: BorderRadius.circular(56),
           child: Container(
@@ -29,6 +24,11 @@ class CategoryIcon extends StatelessWidget {
               fit: BoxFit.fill,
             ),
           ),
+        ),
+        const SizedBox(height: 7),
+        Text(
+          category.name,
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w600),
         ),
       ],
     );

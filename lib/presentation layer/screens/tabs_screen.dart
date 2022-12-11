@@ -36,12 +36,12 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     int currIndex = Provider.of<TabsProvider>(context, listen: false).currentIndex;
+    debugPrint("--- $currIndex");
     return Scaffold(
       extendBody: true,
       drawer: const Drawer(width: 230, backgroundColor: AppColors.lightGrey),
       appBar: PreferredSize(
-        preferredSize:
-            Size.fromHeight(currIndex == 1 || currIndex == 2 || currIndex == 3 ? 56 : 34),
+        preferredSize: Size.fromHeight(currIndex == 0 ? 34 : 56),
         child: Selector<TabsProvider, int>(
           selector: (context, provider) => provider.currentIndex,
           builder: (context, index, child) {
@@ -52,10 +52,8 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
                 child: AppBar(
                   automaticallyImplyLeading: false,
                   titleSpacing: 0,
-                  elevation: index == 1 || index == 2 || index == 3 ? null : 0,
-                  backgroundColor: index == 1 || index == 2 || index == 3
-                      ? AppColors.white
-                      : AppColors.lightGrey,
+                  elevation: index == 0 ? 0 : null,
+                  backgroundColor: index == 0 ? AppColors.lightGrey : AppColors.orange,
                   toolbarOpacity: 0.7,
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
